@@ -32,5 +32,47 @@
 
 ![javascipt 옵션](https://kimlog.me/static/7b56046cd820d53017f5fa7124ba2255/44a54/script_load.png)
 
-## SSL Handshake 동작 원리
+## SSL handshake 동작 원리
 
+### 목표
+
+1. 서버와 클라이언트간 주고 받을 데이터의 암호화 알고리즘 결정
+
+2. 서버와 클라이언트 양측 다 암호화를 위한 동일한 대칭키 ( 비밀키 )를 공유
+
+> 대칭키란 암호/복호시 같은 키를 사용하는 것을 말한다.
+
+### 1. 암호화 알고리즘 결정 - 1 : client -> server
+
+- 클라이언트가 사용 가능한 암호 목록 ( cipher suite )
+- ssl protocol version
+
+### 2. 암호화 알고리즘 결정 - 2 : server -> client
+
+- 클라이언트가 사용 가능한 암호 목록 중 하나 선택
+- ssl protocol version 확인
+
+### 3. 동일한 대칭키 ( 비밀키 ) 공유 - 1 : server -> client
+
+- ssl 인증서 | 서버의 공개키 포함 ( Server Key Exchange )
+
+### 4. 동일한 대칭키 ( 비밀키 ) 공유 - 2 : client
+
+- ssl 인증서 검증
+- 인증서를 발급한 CA에서 공개키를 구함 ( 브라우저나 모바일 기기엔 주요 CA리스트와 공개키를 가지고 있다. )
+- 공개키로 ssl 인증서 복호화
+- 복호화 성공시 검증 성공 ( 서버의 공개키 획득 | Server Key Exchange)
+
+### 5. 동일한 대칭키 ( 비밀키 ) 공유 - 3 : client -> server
+
+- 대칭키 ( 비밀키 ) 생성
+- 대칭키 ( 비밀키 )를 서버의 공개키로 암호화 ( Client Key Exchange )
+
+### 6. 동일한 대칭키 ( 비밀키 ) 공유 - 4 : server
+
+- client로 부터 받은 대칭키를 서버의 비밀키로 복호화 ( Client Key Exchange )
+
+### Finish : server -> client
+
+- 이제 양측은 클라이언트에서 생성한 대칭키 ( 비밀키 ) 공유 완료
+- 통신할 준비가 완료되었다는 Change Ciper Spec 를 client에게 보낸다.
