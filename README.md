@@ -158,7 +158,7 @@ Access-Control-Allow-Methods: GET, PUT
 devServer: {
     proxy: {
       '/api': {
-        target: 'https://api.evan.com',
+        target: 'https://api.arthur.com',
         changeOrigin: true,
         pathRewrite: { '^/api': '' },
       },
@@ -456,6 +456,26 @@ if (true) {
 }
 ```
 
+### Lexical Scope
+
+- 함수를 어디서 호출하는지가 아닌, 어디에 선언하였는지에 따라 결정되는것
+
+```javascript
+var x = 1;
+
+function foo() {
+  var x = 2;
+  foo2();
+}
+
+function foo2() {
+  console.log(x)
+}
+
+foo()     //1
+foo2()    //1
+```
+
 ## 클로져
 
 - 렉시컬 스코프를 기억하여 접근이 가능한 상태
@@ -473,6 +493,18 @@ outer()();
 ```
 
 ## 실행 컨텍스트
+
+- 자바스크립트의 코드들이 실행되기 위한 환경
+- 자바스크립트의 코드가 실행되기 위해서는 변수객체, 스코프체인, this 정보들을 담고 있는 곳
+
+### 순서
+
+- 전역 컨텍스트 하나 생성 후에 함수 호출할 때마다 함수 컨텍스트가 생성
+- 컨텍스트를 생성시에 변수객체, 스코프 체인, this가 생성된다.
+- 컨텍스트 생성 후 함수가 실행되는데 사용되는 변수들은 변수 객체 안에서 값을 찾고 없다면 스코프체인을 따라 올라가며 찾음.
+- 함수 실행이 마무리되면 해당 컨텍스트는 사라짐. 페이지가 종료되면 전역 컨텍스트가 사라짐
+
+### 상세
 
 - Lexical Environment
   - Environment Record
@@ -526,8 +558,38 @@ func1();
 
 ![event loop](https://poiemaweb.com/img/event-loop.gif)
 
+### hasOwnProperty
+
+- 프로토타입 체인을 따라 상속되는 프로퍼티 제거
+
+### AJAX
+
+- javascript 를 이용해 비동기적으로 서버와 브라우저가 데이터를 교환할 수 있는 통신방식
+- 브라우저가 가지고있는 XMLHttpRequest 객체를 이용해서 전체 페이지를 새로 고치지 않고도 페이지의 일부만을 위한 데이터를 로드하는 기법
+
+#### 이점
+
+- AJAX는 HTML 페이지 전체가 아닌 일부분만 갱신할 수 있도록 XMLHttpRequest객체를 통해 서버에 request한다.
+- 이 경우, JSON이나 XML형태로 필요한 데이터만 받아 갱신하기 때문에 그만큼의 자원과 시간을 아낄 수 있다.
+
+### 함수형 프로그래밍
+
+- 부수 효과가 없는 순수 함수를 1급 객체로 간주하여 파라미터로 넘기거나 반환값으로 사용할 수 있으며, 참조 투명성을 지킬 수 있다.
+
+#### 순수함수
+
+- 부수효과가 없는 함수 즉, 어떤 함수에 동일한 인자를 주었을 때 항상 같은 값을 리턴하는 함수
+
+#### 1급객체
+
+1. 변수나 데이타에 할당 할 수 있어야 한다.
+2. 객체의 인자로 넘길 수 있어야 한다.
+3. 객체의 리턴값으로 리턴 할수 있어야 한다.
+
 Reference Site
 
+- <https://sunnykim91.tistory.com/121>
 - <https://m.blog.naver.com/z1004man/222051088407>
 - <https://uwostudy.tistory.com/55>
 - <https://poiemaweb.com/js-execution-context>
+- <https://mangkyu.tistory.com/111>

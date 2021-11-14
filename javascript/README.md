@@ -260,7 +260,7 @@ outer()();
 
 - Call Stack 내에서 현재 실행중인 task가 있는지 확인
 - Event Queue에 task가 있는지 확인
-- Call Stack이 비어져 있다면 Event Queue내의 task가 Call Stack으로 이동
+- Call Stack이 비어져 있다면 Event Queue내의 task를 Call Stack으로 이동시킨다
 
 ```javascript
 function func1() {
