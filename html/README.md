@@ -32,6 +32,136 @@
 
 ![javascipt 옵션](https://kimlog.me/static/7b56046cd820d53017f5fa7124ba2255/44a54/script_load.png)
 
+## CORS ( Cross Origin Resource Sharing )
+
+- 다른 출처에서 자원을 공유 하는 행위
+- 별도의 해결방법을 갖지 않는이상 브라우저는 에러를 출력한다.
+
+### SOP ( Same Origin Policy ) | 브라우저는 기본적으로 동일 출처 정책을 쓴다
+
+- 한 origin 에서 로드된 문서 또는 스크립트가 다른 Origin의 리소스와 상호작용 할수 있는 방법을 제한하는 중요한 보안 메커니즘
+
+### Origin 정의
+
+다음 세가지 요소로 정의된다.
+
+- protocol
+- host
+- post
+
+#### 예시 1
+
+- <http://www.naver.com>
+- <https://www.naver.com>
+
+- 다른 출처이다 ( protocol )
+
+#### 예시 2
+
+- <http://www.github.com:8080>
+- <http://www.github.com:8081>
+
+- 다른 출처이다 ( port )
+
+#### 예시 3
+
+- <http://www.github.com/prev>
+- <http://www.github.com/next>
+
+- 같은 출처이다
+
+### CORS 하는 방법
+
+#### 서버에서 처리
+
+- 가장 최선의 방법으로 서버에서 헤더에 허가해주는 출처를 명시해주는 것이다
+- 이 헤더를 본 브라우더는 더 이상 CORS 에러를 출력하지 않는다.
+
+#### Access-Control-Allow-Origin
+
+- 헤더에 작성된 출처만 브라우저가 리소스를 접근할 수 있도록 허용
+
+```text
+Access-Control-Allow-Origin: * // 모든 출처 허용
+Access-Control-Allow-Origin: http://arthur.tistory.com:8080
+```
+
+#### Access-Control-Allow-Methods
+
+- 그 외에 허용된 출처외에도 허용된 Method로만 요청할수 있도록 설정할 수 있다.
+
+```text
+Access-Control-Allow-Methods: GET, PUT
+```
+
+#### Access-Control-Allow-Headers
+
+- 허용된 헤더값만 받을 수 있도록 설정
+
+#### Access-Control-Expose-Headers
+
+- 해당 헤더는 꼭 넣도록 설정
+
+### 특혜
+
+- 기본적인 CORS는 주요 요청전에 서버에서 Access-Control을 확인 하기 위해 Preflight request를 먼저 요청한다.
+- 하지만 simple request의 조건에 합당한 요청에 대해서는 한번의 요청으로 가져올 수 있다.
+
+#### Simple request
+
+- Method: GET, HEAD, POST 중 1
+- Headers: Accept, Accept-Language, Content-Language, Content-Type, DPR, Downlink, Save-Data, Viewport-Width, Width 중에서만 사용
+- Content-Type: application/x-www-form-urlencoded, multipart/form-data, text/plain 중 1
+
+> 하지만 대부분의 Content-Type은 application/json 사용하기에 까다로운 조건이다.
+
+### 우회
+
+- 보안상 권장되는 사항은 아니나, 가능한 방법
+- 개발 용도 이외의 사용은 안하는 것이 좋다.
+
+#### proxy
+
+- webpack을 사용하는 경우, webpack-dev-server 에 proxy로 요청 대상의 url을 지정하면 우회 가능하다.
+
+```javascript
+devServer: {
+    proxy: {
+      '/api': {
+        target: 'https://api.evan.com',
+        changeOrigin: true,
+        pathRewrite: { '^/api': '' },
+      },
+    }
+  }
+```
+
+#### JSONP (JSON with Padding)
+
+- 크롬 업데이트로 해당 방법도 금지되어 있다.
+
+```html
+<html>
+  <script>
+    function jsonpFn (data) {
+      console.log(data) // beomy
+    }
+  </script>
+  <script
+    type="application/javascript"
+    src="http://localhost:3001/cors?callback=jsonpFn"
+  >
+  </script>
+</html>
+```
+
+```javascript
+// node.js
+router.get('/cors', (req, res, next) => {
+  res.send(`${req.query.callback}('beomy')`)
+})
+```
+
 ## SSL handshake 동작 원리
 
 ### 목표
