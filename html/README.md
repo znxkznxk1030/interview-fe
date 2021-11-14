@@ -32,6 +32,36 @@
 
 ![javascipt 옵션](https://kimlog.me/static/7b56046cd820d53017f5fa7124ba2255/44a54/script_load.png)
 
+### 렌더링 최적화
+
+- 렌더가 완성된 화면에서 이벤트로 화면이 변경되는 경우를 2가지로 분류 할 수 있다.
+- 같은 결과를 취한다면 Reflow보다 Repaint를 사용하는 것이 더 빠르다.
+- Repaint일 경우에도 그라데이션과 같은 작업은 오버해드가 있을수 있으므로 많은 계산이 들어간다면 이미지로 대체하는 것도 방법이다.
+
+#### Reflow
+
+- Render Tree 에서 Layout을 만드는 것
+
+![Reflow](https://developers.google.com/web/fundamentals/performance/rendering/images/intro/frame-full.jpg)
+
+- 뷰포트 변화
+- 폰트의 변화
+- 스타일 추가 또는 제거
+- 내용 변화
+- :hover와 같은 CSS Pseudo Class
+- 클래스 Attribute의 동적 변화
+- JS를 통한 DOM 동적 변화
+- 엘리먼트에 대한 offsetWidth / offsetHeight (화면에서 보여지는 좌표) 계산시
+- 스타일 Attribute 동적변화
+
+#### Repaint
+
+- Painting 과정만 다시 하는것
+
+![Repaint](https://developers.google.com/web/fundamentals/performance/rendering/images/intro/frame-no-layout.jpg)
+
+- opacity, background-color, visibility, outline
+
 ## CORS ( Cross Origin Resource Sharing )
 
 - 다른 출처에서 자원을 공유 하는 행위
@@ -54,21 +84,21 @@
 - <http://www.naver.com>
 - <https://www.naver.com>
 
-- 다른 출처이다 ( protocol )
+> 다른 출처이다 ( protocol )
 
 #### 예시 2
 
 - <http://www.github.com:8080>
 - <http://www.github.com:8081>
 
-- 다른 출처이다 ( port )
+> 다른 출처이다 ( port )
 
 #### 예시 3
 
-- <http://www.github.com/prev>
-- <http://www.github.com/next>
+- <http://www.github.com/prev?q=1>
+- <http://www.github.com/next?q=123#>
 
-- 같은 출처이다
+> 같은 출처이다
 
 ### CORS 하는 방법
 
@@ -138,7 +168,7 @@ devServer: {
 
 #### JSONP (JSON with Padding)
 
-- 크롬 업데이트로 해당 방법도 금지되어 있다.
+- 크롬 업데이트로 해당 방법은 금지되어 있다.
 
 ```html
 <html>
