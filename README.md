@@ -320,7 +320,6 @@ function cloneObject(obj) {
   return clone;
 }
 
-
 var obj = { list: [1,2,3] }
 var cpyObj = cloneObject(obj)
 
