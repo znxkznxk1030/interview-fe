@@ -1,12 +1,13 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap");
 
 :root {
-  --gray-6: #F2F2F2;
-  --border: #BDBDBD
+  --gray-6: #f2f2f2;
+  --border: #bdbdbd;
 }
 
-*,::before, ::after {
+*,
+::before,
+::after {
   box-sizing: border-box;
 }
 
@@ -20,11 +21,12 @@ html {
   width: 100vw;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   outline: 0;
-  font-family: 'Rovoto', sans-serif;
+  font-family: "Rovoto", sans-serif;
   font-weight: 500;
 }
 
@@ -38,9 +40,9 @@ html, body {
 
 .movie-container {
   width: 1060px;
-  height: 1170px;
+  height: auto;
   background-color: var(--gray-6);
-  margin-top: 86px; 
+  margin-top: 86px;
   margin-bottom: 135px;
   border-radius: 15px;
   border: 2px solid var(--border);
@@ -48,6 +50,7 @@ html, body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-bottom: 26px;
 }
 
 .movie-header {
@@ -59,28 +62,24 @@ html, body {
   flex-direction: column;
 }
 
-.movie-header-title {
+.movie-header > h2 {
   height: 102px;
   width: 100%;
+  font-size: 24px;
+  font-weight: 700;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.movie-header-title::after {
-  content: '';
+.movie-header > h2::after {
+  content: "";
   width: 100%;
   position: absolute;
   bottom: 0;
   height: 2px;
   background-color: var(--border);
-}
-
-.movie-header-title--h2 {
-  margin: auto;
-  font-size: 24;
-  font-weight: 700;
 }
 
 .movie-header-list {
@@ -91,22 +90,54 @@ html, body {
   align-items: center;
 }
 
-.movie-header-item.active {
+.movie-header-list li.active {
   font-weight: 900;
-  color: #000
+  color: #000;
 }
 
-.movie-header-item {
+.movie-header-list li {
   font-weight: 500;
   color: #828282;
 }
 
-.movie-content {
+.movie-card-list {
   width: 1003px;
-  height: 962px;
+  height: auto;
   background-color: #fff;
   border-radius: 15px;
   border: 2px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-top: 26px;
+}
+
+.movie-card-list li {
+  border-radius: 10px;
+  background-color: #fff;
+  border: 2px solid var(--border);
+  margin-bottom: 26px;
+  position: relative;
+}
+
+.movie-card-list li > a[class^="link"] {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  height: 41px;
+  line-height: 41px;
+  background: #f2f2f2;
+  border-top: 1px solid #bdbdbd;
+}
+
+.link-preview::before {
+  content: "";
+  display: inline-block;
+  background: url("./img/play-circle.png") no-repeat center center/cover;
+  width: 16px;
+  height: 16px;
+  vertical-align: top;
+  margin: 11px 2px 0 0;
 }
 
 .footer {
