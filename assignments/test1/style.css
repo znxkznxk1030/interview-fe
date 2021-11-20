@@ -8,7 +8,7 @@
 *,
 ::before,
 ::after {
-  box-sizing: border-box;
+  box-sizing: content-box;
 }
 
 ul {
@@ -71,6 +71,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .movie-header > h2::after {
@@ -115,9 +117,31 @@ body {
 .movie-card-list li {
   border-radius: 10px;
   background-color: #fff;
-  border: 2px solid var(--border);
+  outline: 2px solid var(--border);
   margin-bottom: 26px;
   position: relative;
+  padding: 19px 20px, 0, 20px;
+  overflow: hidden;
+}
+
+.movie-card-content {
+  padding: 20px;
+  width: 180px;
+}
+
+.movie-card-content > img {
+  width: 180px;
+  height: 250px;
+}
+
+.movie-title {
+  display: block;
+  font-weight: 900;
+  text-align: center;
+  height: 23px;
+  width: 168px;
+  line-height: 23px;
+  text-overflow: ellipsis;
 }
 
 .movie-card-list li > a[class^="link"] {
@@ -127,7 +151,17 @@ body {
   height: 41px;
   line-height: 41px;
   background: #f2f2f2;
-  border-top: 1px solid #bdbdbd;
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+.link-reserv::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background-color: var(--border);
 }
 
 .link-preview::before {
