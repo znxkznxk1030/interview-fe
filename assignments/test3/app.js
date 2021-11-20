@@ -11,18 +11,20 @@ $stars_rate.forEach(($star) => {
   });
 });
 
-function fillstars(rate) {
+function fillstars(target) {
   $stars.forEach(($star) => {
     let cur = $star.getAttribute("data-rate");
-    if (cur <= rate) {
-      $star.classList.add("full-star-icon");
-    } else {
-      $star.classList.remove("full-star-icon");
-      $star.classList.remove("half-star-icon");
+
+    $star.classList.remove("full-star-icon");
+    $star.classList.remove("half-star-icon");
+
+    if (target == cur - 0.5) {
+      $star.classList.add("half-star-icon");
+      return;
     }
 
-    if (rate == cur - 0.5) {
-      $star.classList.add("half-star-icon");
+    if (cur <= target) {
+      $star.classList.add("full-star-icon");
     }
   });
 }
