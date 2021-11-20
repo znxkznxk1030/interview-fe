@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto:wght@500;700;900&display=swap');
 
 :root {
   --gray-6: #f2f2f2;
@@ -108,10 +109,13 @@ body {
   background-color: #fff;
   border-radius: 15px;
   border: 2px solid var(--border);
+  padding-top: 26px;
+}
+
+.movie-card-list ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding-top: 26px;
 }
 
 .movie-card-list li {
@@ -125,13 +129,60 @@ body {
 }
 
 .movie-card-content {
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   width: 180px;
 }
 
 .movie-card-content > img {
   width: 180px;
   height: 250px;
+}
+
+.movie-card-content dl {
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+}
+
+.movie-card-content dl > div {
+  margin-bottom: 5px;
+}
+
+.movie-card-content dl dt,
+.movie-card-content dl dd {
+  display: inline-block;
+}
+
+.movie-card-content dl dt {
+  color: #828282;
+}
+
+.movie-card-content dl dt {
+  color: #828282;
+}
+
+.movie-card-content dl dt.rate::after{
+  content: "";
+  display: inline-block;
+  background: url("./img/star-1.png") no-repeat center center/cover;
+  width: 14px;
+  height: 14px;
+  vertical-align: top;
+  margin: 2px 0 0 5px;
+}
+
+.movie-card-content dl dd {
+  margin-left: 5px;
+}
+
+.movie-card-content dl dd.cast {
+  width: 120px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .movie-title {
