@@ -1,6 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto:wght@500;700;900&display=swap');
 
+/* 스크린리더 전용 */
+.sr-only {
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
+
 :root {
   --gray-6: #f2f2f2;
   --border: #bdbdbd;
