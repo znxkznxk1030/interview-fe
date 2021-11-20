@@ -1,0 +1,36 @@
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+}
+
+.rate-stars {
+  height: 51px;
+}
+
+.rate-stars .star {
+  width: 51px;
+  height: 51px;
+  display: inline-block;
+  background: url(./img/icon_empty_star.png) no-repeat center center/cover;
+  position: relative;
+}
+
+.star > .star-half {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+}
+
+.half-star-icon {
+  background: url(./img/icon_half_star.png) no-repeat center center/cover !important;
+}
+
+.full-star-icon {
+  background: url(./img/icon_star.png) no-repeat center center/cover !important;
+}
