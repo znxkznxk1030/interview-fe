@@ -5,6 +5,7 @@
 }
 
 .btn-upload {
+  display: block;
   width: 185px;
   height: 54px;
   background: #2f80ed;
@@ -14,7 +15,7 @@
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
-  line-height: 26px;
+  line-height: 54px;
   text-align: center;
   border: 0;
   margin-left: 80px;
@@ -32,25 +33,24 @@
   align-items: center;
   justify-content: space-around;
   perspective:  1000px;
-  margin-top: 50px;
+  margin-top: 150px;
 }
 
 :root {
   --carousel-width: 1220px;
-  --card-width: 464px;
-  --second: 378px;
-  --third: 289px;
+  --card-width: 364px;
 }
 
-.carousel > ul {
+.card-list {
   /* background: blue; */
   width: 1220px;
   height: 463px;
   position: relative;
   transform-style: preserve-3d;
+  padding-top: 50px;
 }
 
-.carousel > ul > li {
+.card-list > li {
   position: absolute;
 }
 
@@ -86,16 +86,12 @@
 .card-item > .card-img {
   width: var(--card-width);
   height: var(--card-width);
+  border-radius: 10px;
 }
 
 .card-item > .card-img > .card-img--mirror {
   width: var(--card-width);
   height: var(--card-width);
-  background: linear-gradient(
-      180deg,
-      #ffffff 50%,
-      rgba(255, 255, 255, 0.71) 100%
-    );
   border-radius: 10px;
   transform: rotate(180deg);
   position: absolute;

@@ -9,11 +9,14 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <button class="btn-upload">이미지 업로드</button>
+    <div>
+      <input type="file" id="upload" accept="image/*" hidden />
+      <label class="btn-upload" for="upload">이미지 업로드</label>
+    </div>
+    <!-- <button class="btn-upload">이미지 업로드</button> -->
     <section class="carousel">
       <button class="nav-prev">&lt; Prev</button>
-      <ul class="card-list">
-      </ul>
+      <ul class="card-list"></ul>
       <button class="nav-next">Next &gt;</button>
     </section>
     <script src="app.js"></script>
