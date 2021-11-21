@@ -58,7 +58,7 @@ function rotateCards() {
   $cards.forEach(($card, i) => {
     $card.style.transform = `
       rotateY(${an * (i + page)}deg)
-      translateZ(250px)
+      translateZ(320px)
       rotateY(${-an * (i + page)}deg)`;
   });
 }
