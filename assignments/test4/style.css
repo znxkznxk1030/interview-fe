@@ -1,0 +1,103 @@
+:root {
+  --primary-color: #9b51e0;
+}
+
+:root {
+  --z-back: -10;
+  --z-nav: 10;
+}
+
+.music-dream {
+  height: 100vh;
+  width: 100vw;
+  background: var(--primary-color);
+  position: relative;
+  z-index: var(--z-back);
+}
+
+.music-dream > .logo {
+  width: 134px;
+  height: 64px;
+  position: absolute;
+  background: url(./img/Logo.png) no-repeat center center/cover;
+  top: 50%;
+  left: 50%;
+  transform: translate(-67px, -32px);
+  z-index: var(--z-back);
+}
+
+/* 
+  Contents
+*/
+.content {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.content > section {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+}
+
+.content > section.topfive {
+  background: red;
+  left: 0;
+}
+
+.content > section.playlist {
+  background: blue;
+  left: 100vw;
+}
+
+.content > section.search {
+  background: green;
+  left: 200vw;
+}
+
+
+
+/* 
+  Footer
+ */
+
+footer.nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  background:  #E0E0E0;
+  z-index: var(--z-nav);
+}
+.nav-list {
+  display: flex;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  color: #333333;
+}
+
+.nav-link.active {
+  color: var(--primary-color);
+}
+
+.nav-link.active > svg > path {
+  stroke: var(--primary-color);
+}
+
+.nav-link > svg {
+  margin-bottom: 11.6px;
+}

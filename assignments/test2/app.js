@@ -25,13 +25,13 @@ $uploadBtn.addEventListener("change", function () {
 $prevBtn.addEventListener("click", () => {
   const l = $cards ? $cards.length : 0;
   page -= 1;
-  if (page < 0) page = l;
+  if (page < 0) page = 0;
   rotateCards();
 });
 
 $nextBtn.addEventListener("click", () => {
   const l = $cards ? $cards.length : 0;
-  page = (page + 1) % l;
+  page++;
   rotateCards();
 });
 
