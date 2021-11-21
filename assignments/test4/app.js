@@ -1,9 +1,16 @@
 let page = 1
 const $nav_links = document.querySelectorAll(".nav-link")
-const $contents = document.querySelectorAll(".content > section")
+const $sections = document.querySelectorAll(".content > section")
 
+const $content = document.querySelector(".content")
+const $nav = document.querySelector(".nav")
+
+setTimeout(() => {
+  init()
+}, 200)
 
 function init() {
+  reveal()
   activeLink()
   slideContent()
 }
@@ -19,6 +26,11 @@ $nav_links.forEach(($navlink) => {
 
 const $nav_top = document.getElementsByClassName("link-topfive")
 
+function reveal() {
+  $content.classList.remove("hide")
+  $nav.classList.remove("hide")
+}
+
 function activeLink() {
   $nav_links.forEach(($navlink) => {
     $navlink.classList.remove("active")
@@ -32,7 +44,7 @@ function activeLink() {
 }
 
 function slideContent() {
-  $contents.forEach(($content) => {
-    $content.style.transform = `translateX(-${100 * (page - 1)}vw)`
+  $sections.forEach(($section) => {
+    $section.style.transform = `translateX(-${100 * (page - 1)}vw)`
   })
 }

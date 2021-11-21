@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Roboto:wght@500;700;900&display=swap");
+
 :root {
   --primary-color: #9b51e0;
 }
@@ -6,6 +8,11 @@
   --z-back: 0;
   --z-content: 1;
   --z-nav: 100;
+}
+
+html {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
 }
 
 .music-dream {
@@ -26,6 +33,10 @@
   z-index: var(--z-back);
 }
 
+.hide {
+  visibility: hidden;
+}
+
 /* 
   Contents
 */
@@ -42,13 +53,12 @@
   top: 0;
   width: 100vw;
   height: 100vh;
-  transition: transform .5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 }
 
 .content > section.topfive {
-  background: red;
+  background: #fff;
   left: 0;
-
 }
 
 .content > section.playlist {
@@ -61,7 +71,65 @@
   left: 200vw;
 }
 
+/* 
+  Top 5
+*/
 
+.topfive > header {
+  width: 100%;
+  height: 150px;
+  background: url(./img/main-top.png) no-repeat center center/cover;
+}
+
+.topfive ul {
+  padding-top: 18px;
+  overflow-y: scroll;
+}
+
+.topfive ul > li {
+  height: 50px;
+  width: 314px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topfive ul > li .no {
+  font-weight: 900;
+  color: var(--primary-color);
+}
+
+.topfive ul > li img {
+  width: 50px;
+  height: 50px;
+}
+
+.topfive ul > li .song-info {
+  width: 160px;
+}
+
+.topfive ul > li .song-info > dt {
+  font-weight: 500;
+  line-height: 20.72px;
+}
+
+.topfive ul > li .song-info > dl {
+  font-size: 12px;
+  line-height: 17.76px;
+}
+
+.topfive ul > li .icon-play {
+  width: 22px;
+  height: 22px;
+  background: url(./img/icon-play.png) no-repeat center center/cover;
+}
+
+.topfive ul > li .icon-plus {
+  width: 22px;
+  height: 22px;
+  background: url(./img/icon-plus.png) no-repeat center center/cover;
+}
 
 /* 
   Footer
@@ -72,7 +140,7 @@ footer.nav {
   bottom: 0;
   width: 100%;
   height: 80px;
-  background:  #E0E0E0;
+  background: #e0e0e0;
   z-index: var(--z-nav);
 }
 .nav-list {
