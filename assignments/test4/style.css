@@ -3,8 +3,9 @@
 }
 
 :root {
-  --z-back: -10;
-  --z-nav: 10;
+  --z-back: 0;
+  --z-content: 1;
+  --z-nav: 100;
 }
 
 .music-dream {
@@ -12,7 +13,6 @@
   width: 100vw;
   background: var(--primary-color);
   position: relative;
-  z-index: var(--z-back);
 }
 
 .music-dream > .logo {
@@ -34,20 +34,21 @@
   height: 100vh;
   overflow: hidden;
   position: relative;
+  z-index: var(--z-content);
 }
 
 .content > section {
-  display: inline-block;
   position: absolute;
   top: 0;
   width: 100vw;
   height: 100vh;
-  background: #000;
+  transition: transform .5s ease-in-out;
 }
 
 .content > section.topfive {
   background: red;
   left: 0;
+
 }
 
 .content > section.playlist {
