@@ -81,9 +81,14 @@ html {
   background: url(./img/main-top.png) no-repeat center center/cover;
 }
 
+.topfive article {
+  height: calc(100% - 150px);
+  overflow-y: scroll;
+}
+
 .topfive ul {
   padding-top: 18px;
-  overflow-y: scroll;
+  padding-bottom: 18px;
 }
 
 .topfive ul > li {
@@ -93,6 +98,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .topfive ul > li .no {
